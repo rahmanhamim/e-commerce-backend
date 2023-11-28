@@ -28,7 +28,16 @@ const login = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-  res.send("logout route");
+  res.cookie("token", "logout", {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+    secure: process.env.NODE_ENV === "production",
+    signed: true,
+  });
+
+  res.status(StatusCodes.OK).send({
+    message: "user logged out",
+  });
 };
 
 module.exports = {
