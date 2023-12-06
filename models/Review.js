@@ -38,4 +38,21 @@ const ReviewSchema = new mongoose.Schema(
 // user can only add one review per product
 ReviewSchema.index({ product: 1, user: 1 }, { unique: true });
 
+// statics are called on the schema itself not on the instance like methods i repeat.
+ReviewSchema.statics.calcAverageRatings = async function (productId) {
+  console.log("productId from calc avg rating", productId);
+};
+
+ReviewSchema.post("save", async function () {
+  await this.constructor.calcAverageRatings(this.product);
+});
+
+ReviewSchema.post(
+  "deleteOne",
+  { document: true, query: false },
+  async function (doc) {
+    await this.model("Review").calcAverageRatings(doc.product);
+  }
+);
+
 module.exports = mongoose.model("Review", ReviewSchema);
