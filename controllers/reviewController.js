@@ -87,10 +87,23 @@ const deleteReview = async (req, res) => {
   }
 
   checkPermissions(req.user, review.user);
-
   await review.deleteOne({ _id: req.params.id });
-
   res.status(StatusCodes.OK).json({ msg: "success! review removed" });
+};
+
+const getSingleProductReviews = async (req, res) => {
+  const { id: productId } = req.params;
+  const reviews = await Review.find({ product: productId })
+    .populate({
+      path: "product",
+      select: "name price company",
+    })
+    .populate({
+      path: "user",
+      select: "name email",
+    });
+
+  res.status(StatusCodes.OK).json({ count: reviews.length, reviews });
 };
 
 module.exports = {
@@ -99,4 +112,5 @@ module.exports = {
   getSingleReview,
   updateReview,
   deleteReview,
+  getSingleProductReviews,
 };
