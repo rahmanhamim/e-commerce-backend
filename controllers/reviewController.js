@@ -5,6 +5,8 @@ const { StatusCodes } = require("http-status-codes");
 const CustomError = require("../errors");
 const { checkPermissions } = require("../utils");
 
+// when removing product remove all reviews associated with it as well (cascade delete) with pre hook. It doesn't make sense to keep reviews of a product that doesn't exist
+
 const createReview = async (req, res) => {
   const { product: productId } = req.body;
 

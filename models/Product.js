@@ -80,4 +80,15 @@ ProductSchema.virtual("reviews", {
   // match: { rating: { $gte: 3 } },
 });
 
+ProductSchema.pre(
+  "deleteOne",
+  { document: true, query: false },
+  async function (next) {
+    // console.log("productId", this); // not this._conditions._id
+    const productId = this._id;
+    await mongoose.model("Review").deleteMany({ product: productId });
+    next();
+  }
+);
+
 module.exports = mongoose.model("Product", ProductSchema);
