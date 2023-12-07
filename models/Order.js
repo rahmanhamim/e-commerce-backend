@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const SingleCartItemSchema = new mongoose.Schema({
+const SingleOrderItemSchema = new mongoose.Schema({
   name: { type: String, required: true },
   image: { type: String, required: true },
   price: { type: Number, required: true },
@@ -18,7 +18,7 @@ const OrderSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Please provide shipping fee"],
     },
-    subTotal: {
+    subtotal: {
       type: Number,
       required: [true, "Please provide sub total"],
     },
@@ -26,7 +26,7 @@ const OrderSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Please provide total"],
     },
-    cartItems: [SingleCartItemSchema],
+    orderItems: [SingleOrderItemSchema],
     status: {
       type: String,
       enum: ["pending", "failed", "paid", "delivered", "cancelled"],
@@ -48,4 +48,4 @@ const OrderSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Order = mongoose.model("Order", OrderSchema);
+module.exports = mongoose.model("Order", OrderSchema);
