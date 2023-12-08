@@ -1,5 +1,6 @@
 const CustomError = require("../errors");
 
+// resource user id is the id of the user who owns the resource. this is from the database
 const checkPermissions = (requestUser, resourceUserId) => {
   // console.log(requestUser);
   // console.log(resourceUserId);
