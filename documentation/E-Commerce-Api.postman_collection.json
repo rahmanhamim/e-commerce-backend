@@ -15,9 +15,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/auth/logout",
+							"raw": "http://localhost:5000/auth/logout",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"auth",
@@ -42,9 +42,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/auth/login",
+							"raw": "http://localhost:5000/auth/login",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"auth",
@@ -81,9 +81,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/auth/register",
+							"raw": "http://localhost:5000/auth/register",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"auth",
@@ -104,9 +104,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users",
+							"raw": "http://localhost:5000/users",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"users"
@@ -121,9 +121,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/show-me",
+							"raw": "http://localhost:5000/users/show-me",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"users",
@@ -139,9 +139,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/users/6565d0108f280b093ba10fbc",
+							"raw": "http://localhost:5000/users/6565d0108f280b093ba10fbc",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"users",
@@ -166,9 +166,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/users/update-user",
+							"raw": "http://localhost:5000/users/update-user",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"users",
@@ -193,9 +193,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/users/update-user-password",
+							"raw": "http://localhost:5000/users/update-user-password",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"users",
@@ -216,9 +216,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/products",
+							"raw": "http://localhost:5000/products",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"products"
@@ -242,9 +242,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/products",
+							"raw": "http://localhost:5000/products",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"products"
@@ -259,9 +259,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/products/6570b46334238feb7769c01a",
+							"raw": "http://localhost:5000/products/6570b46334238feb7769c01a",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"products",
@@ -286,9 +286,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/products/656cbd32600975a008ac95b8",
+							"raw": "http://localhost:5000/products/656cbd32600975a008ac95b8",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"products",
@@ -304,9 +304,9 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/products/656d9d3fe8f272c5e0de458a",
+							"raw": "http://localhost:5000/products/656d9d3fe8f272c5e0de458a",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"products",
@@ -332,9 +332,9 @@
 							]
 						},
 						"url": {
-							"raw": "{{URL}}/products/uploadImage",
+							"raw": "http://localhost:5000/products/uploadImage",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"products",
@@ -350,9 +350,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/products/656cbd32600975a008ac95b8/reviews",
+							"raw": "http://localhost:5000/products/656cbd32600975a008ac95b8/reviews",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"products",
@@ -374,9 +374,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/reviews",
+							"raw": "http://localhost:5000/reviews",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"reviews"
@@ -400,9 +400,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/reviews",
+							"raw": "http://localhost:5000/reviews",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"reviews"
@@ -417,9 +417,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/reviews/656eeef1d00e371fca5c504c",
+							"raw": "http://localhost:5000/reviews/656eeef1d00e371fca5c504c",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"reviews",
@@ -444,9 +444,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/reviews/6570aff10998c1cd5b2759b9",
+							"raw": "http://localhost:5000/reviews/6570aff10998c1cd5b2759b9",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"reviews",
@@ -462,9 +462,9 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/reviews/65718aee5bff98f344d29ce5",
+							"raw": "http://localhost:5000/reviews/65718aee5bff98f344d29ce5",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"reviews",
@@ -485,9 +485,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/orders",
+							"raw": "http://localhost:5000/orders",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"orders"
@@ -511,9 +511,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/orders",
+							"raw": "http://localhost:5000/orders",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"orders"
@@ -528,9 +528,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/orders/6572a5293026522796e16aa1",
+							"raw": "http://localhost:5000/orders/6572a5293026522796e16aa1",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"orders",
@@ -555,9 +555,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/orders/6572a5293026522796e16aa1",
+							"raw": "http://localhost:5000/orders/6572a5293026522796e16aa1",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"orders",
@@ -573,9 +573,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/orders/my-orders",
+							"raw": "http://localhost:5000/orders/my-orders",
 							"host": [
-								"{{URL}}"
+								"http://localhost:5000"
 							],
 							"path": [
 								"orders",
