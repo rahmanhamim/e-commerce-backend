@@ -14,13 +14,21 @@ const register = async (req, res) => {
   // first user to register is admin
   const role = (await User.countDocuments({})) === 0 ? "admin" : "user";
 
-  const user = await User.create({ name, email, password, role });
-  const tokenUser = createTokenUser(user);
+  const verificationToken = "fakeToken";
 
-  // attach token to cookie
-  attachCookiesToResponse({ res, user: tokenUser });
+  const user = await User.create({
+    name,
+    email,
+    password,
+    role,
+    verificationToken,
+  });
 
-  res.status(StatusCodes.CREATED).json({ user: tokenUser });
+  // send verification token back while only testing in postman
+  res.status(StatusCodes.CREATED).json({
+    msg: "Successfully registered, please check your email for verification",
+    verificationToken: user.verificationToken,
+  });
 };
 
 const login = async (req, res) => {
@@ -38,6 +46,11 @@ const login = async (req, res) => {
   if (!isPasswordCorrect) {
     throw new CustomError.UnauthenticatedError("Invalid Credentials");
   }
+
+  if (!user.isVerified) {
+    throw new CustomError.UnauthenticatedError("Please verify your email");
+  }
+
   const tokenUser = createTokenUser(user);
   attachCookiesToResponse({ res, user: tokenUser });
 
@@ -62,3 +75,7 @@ module.exports = {
   login,
   logout,
 };
+
+/* const tokenUser = createTokenUser(user);
+  attachCookiesToResponse({ res, user: tokenUser });
+  res.status(StatusCodes.CREATED).json({ user: tokenUser }); */
