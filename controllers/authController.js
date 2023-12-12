@@ -128,11 +128,19 @@ const login = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-  res.cookie("token", "logout", {
+  await Token.findOneAndDelete({ user: req.user.userId });
+
+  res.cookie("accessToken", "logout", {
     httpOnly: true,
     expires: new Date(Date.now()),
-    secure: process.env.NODE_ENV === "production",
-    signed: true,
+    // secure: process.env.NODE_ENV === "production",
+    // signed: true,
+  });
+  res.cookie("refreshToken", "logout", {
+    httpOnly: true,
+    expires: new Date(Date.now()),
+    // secure: process.env.NODE_ENV === "production",\
+    // signed: true,
   });
 
   res.status(StatusCodes.OK).send({
