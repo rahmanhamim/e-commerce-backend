@@ -34,15 +34,24 @@ const register = async (req, res) => {
 
 const verifyEmail = async (req, res) => {
   const { verificationToken, email } = req.body;
-  if (!verificationToken || !email) {
-    throw new CustomError.BadRequestError(
-      "Please provide email and verification token"
-    );
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    throw new CustomError.UnauthenticatedError("Invalid email provided");
   }
 
+  if (user.verificationToken !== verificationToken) {
+    throw new CustomError.UnauthenticatedError("Invalid verification token");
+  }
+
+  user.isVerified = true;
+  user.verified = Date.now();
+  user.verificationToken = "";
+
+  await user.save();
+
   res.status(StatusCodes.OK).send({
-    email,
-    verificationToken,
+    message: "Email verified successfully",
   });
 };
 
