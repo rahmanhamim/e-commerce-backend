@@ -32,6 +32,20 @@ const register = async (req, res) => {
   });
 };
 
+const verifyEmail = async (req, res) => {
+  const { verificationToken, email } = req.body;
+  if (!verificationToken || !email) {
+    throw new CustomError.BadRequestError(
+      "Please provide email and verification token"
+    );
+  }
+
+  res.status(StatusCodes.OK).send({
+    email,
+    verificationToken,
+  });
+};
+
 const login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -75,6 +89,7 @@ module.exports = {
   register,
   login,
   logout,
+  verifyEmail,
 };
 
 /* const tokenUser = createTokenUser(user);
