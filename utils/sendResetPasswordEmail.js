@@ -6,17 +6,16 @@ const sendResetPasswordEmail = async ({
   resetPasswordToken,
   origin,
 }) => {
-  //   const resetPasswordURL = `${origin}/auth/reset-password?token=${resetPasswordToken}&email=${email}`;
-  //   const message = `
-  //   <h1>Hello ${name}, Please click the link to reset your password</h1>
-  //   <a href=${resetPasswordURL} clicktracking=off>${resetPasswordURL}</a>
-  // `;
-  //   return sendEmail({
-  //     to: email,
-  //     subject: "Reset your password",
-  //     html: message,
-  //   });
-  // ON_PROGRESS
+  const resetPasswordURL = `${origin}/reset-password?token=${resetPasswordToken}&email=${email}`;
+  const message = `<p> Please reset password by clicking on the following link: 
+    <a href="${resetPasswordURL}">Reset Password</a>
+  </p>`;
+
+  return await sendEmail({
+    to: email,
+    subject: "Reset Password",
+    html: `<h4>Hi ${name}</h4> <br/> ${message}`,
+  });
 };
 
 module.exports = sendResetPasswordEmail;

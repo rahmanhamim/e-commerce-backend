@@ -6,6 +6,7 @@ const {
   attachCookiesToResponse,
   createTokenUser,
   sendVerificationEmail,
+  sendResetPasswordEmail,
 } = require("../utils");
 const crypto = require("crypto");
 
@@ -160,6 +161,12 @@ const forgotPassword = async (req, res) => {
   if (user) {
     const passwordToken = crypto.randomBytes(70).toString("hex");
     // send email
+    await sendResetPasswordEmail({
+      name: user.name,
+      email: user.email,
+      resetPasswordToken: passwordToken,
+      origin: "http://localhost:3000",
+    });
 
     const tenMinutes = 10 * 60 * 1000;
     const passwordTokenExpirationDate = Date.now() + tenMinutes;
@@ -175,7 +182,33 @@ const forgotPassword = async (req, res) => {
 };
 
 const resetPassword = async (req, res) => {
-  res.send("reset password route");
+  const { token, email, password } = req.body;
+
+  if (!token || !email || !password) {
+    throw new CustomError.BadRequestError("Please provide all required fields");
+  }
+
+  const user = await User.findOne({ email });
+
+  if (user) {
+    const currentDate = Date.now();
+
+    if (
+      user.passwordToken === token &&
+      user.passwordTokenExpirationDate > currentDate
+    ) {
+      user.password = password;
+      user.passwordToken = "";
+      user.passwordTokenExpirationDate = null;
+      await user.save();
+
+      res.status(StatusCodes.OK).send({
+        msg: "Password reset successful",
+      });
+    }
+  } else {
+    throw new CustomError.UnauthenticatedError("Invalid Credentials");
+  }
 };
 
 module.exports = {
